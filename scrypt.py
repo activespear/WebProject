@@ -21,23 +21,23 @@ def index():
                             <table class="mainTable">
                                 <tr>
                                     <td class="mainTableTd">
-                                        <table>
+                                        <table width="100%">
                                             <tr>
-                                                <td class="headerTableTd">Главная</td>
-                                                <td class="headerTableTd" width="100%" align="center">&nbsp;<b>DostSeeker.com</b>&nbsp;</td>
-                                                <td class="headerTableTd">&#X2709;</td>
-                                                <td class="headerTableTd">Log&nbsp;in</td>
+                                                <td class="headerTableTd" width="150px" align="center"><a href="/">Главная</a></td>
+                                                <td class="headerTableTd" width="*" align="center">&nbsp;<b>DostSeeker.com</b>&nbsp;</td>
+                                                <td class="headerTableTd" width="15px"><a href="/mail">&#X2709;</a></td>
+                                                <td class="headerTableTd" width="150px" align="center"><a href="/login">Авторизоваться</a></td>
                                             </tr>
                                         </table>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="mainTableTd">
-                                        <table>
+                                        <table width="100%">
                                             <tr style="vertical-align: top;">
-                                                <td class="contentTableTd" align="center">Фильтр</td>
-                                                <td class="contentTableTd" width="100%" height="500px" align="center">Карта</td>
-                                                <td class="contentTableTd" align="center">Описание</td>
+                                                <td class="contentTableTd" width="220px" align="center"><b>Фильтр</b></td>
+                                                <td class="contentTableTd" width="*" height="500px" align="center"><b>Карта</b></td>
+                                                <td class="contentTableTd" width="265px" align="center"><b>Описание</b></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -45,6 +45,14 @@ def index():
                             </table>
                       </body>
                     </html>"""
+
+@app.route('/mail')
+def mail():
+    return index()
+
+@app.route('/login')
+def login():
+    return index()
 
 @app.route('/bootstrap_sample')
 def bootstrap():

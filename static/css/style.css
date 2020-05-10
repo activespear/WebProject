@@ -2,6 +2,11 @@ h1 {
    color: #d22e3a;
 }
 
+a {
+    font-weight: bold;
+    text-decoration: none;
+}
+
 .mainTable {
     border: 1px solid;
     border-color: #330033;
