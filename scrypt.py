@@ -17,7 +17,6 @@ def index():
                         <title>&nbsp;-&nbsp;DostSeeker.com&nbsp;-&nbsp;</title>
                       </head>
                       <body>
-                        <!--h1>Первая HTML-страница</h1-->
                             <table class="mainTable">
                                 <tr>
                                     <td class="mainTableTd">
@@ -35,7 +34,13 @@ def index():
                                     <td class="mainTableTd">
                                         <table width="100%">
                                             <tr style="vertical-align: top;">
-                                                <td class="contentTableTd" width="220px" align="center"><b>Фильтр</b></td>
+                                                <td class="contentTableTd" width="220px">
+                                                    <table>
+                                                        <tr><td align="center"><b>Фильтр</b></td></tr>
+                                                        <tr><td>{_get_class_filter()}</td></tr>
+                                                        <tr><td>{_get_subject_filter()}</td></tr>
+                                                    </table>
+                                                </td>
                                                 <td class="contentTableTd" width="*" height="500px" align="center"><b>Карта</b></td>
                                                 <td class="contentTableTd" width="265px" align="center"><b>Описание</b></td>
                                             </tr>
@@ -53,6 +58,24 @@ def mail():
 @app.route('/login')
 def login():
     return index()
+
+def _get_class_filter():
+    return f"""<select name="class" style="width: 150px;">
+        <option value="">Выберите класс</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+    </select>"""
+
+
+def _get_subject_filter():
+    return f"""<select name="subject" style="width: 150px;">
+        <option value="">Выберите предмет</option>
+        <option value="История">История</option>
+        <option value="География">География</option>
+        <option value="Биология">Биология</option>
+    </select>"""
 
 @app.route('/bootstrap_sample')
 def bootstrap():
