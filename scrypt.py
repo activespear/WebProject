@@ -26,10 +26,12 @@ def index():
 
     if class_value and subject_value and place_value:
         lesson = sql.get_lesson(class_value, subject_value, place_value)
-        param['img'] = f'static/meta/img/{lesson}.png'
+        param['photo'] = f'static/meta/img/{lesson}.png'
         text = open(f'static/meta/text/{lesson}.txt', 'r')
         text = text.read().split('\n')
         param['text'] = '<br />'.join(text)
+        show_on_map(place_value)
+        param['img'] = 'static/meta/maps/map.png'
 
     return render_template('main.html', **param,
                            class_value=class_value, subject_value=subject_value, place_value=place_value)

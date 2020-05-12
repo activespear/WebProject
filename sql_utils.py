@@ -35,7 +35,7 @@ def get_lesson(form, subj, place):
     con = sqlite3.connect('DostSeeker.db')
     cur = con.cursor()
     result = cur.execute(f"""SELECT Lesson FROM Lessons
-                    WHERE Form = '{form}' AND Subject = '{subj}' AND Place = '{place}'""").fetchall()[0]
+                    WHERE Form = '{form}' AND Subject = '{subj}' AND Place = '{place}'""").fetchall()[0][0]
     return result
 
 

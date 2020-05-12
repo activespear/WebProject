@@ -9,9 +9,9 @@ def show_on_map(destination):
     data = json.loads(response)
     deta = data["response"]["GeoObjectCollection"]["featureMember"][0]["GeoObject"]
     coords = deta["Point"]["pos"].split()
-    map_request = "http://static-maps.yandex.ru/1.x/?ll={},{}&l=map&z=10&pt={},{},pm2gnm&size=600,450". \
+    map_request = "http://static-maps.yandex.ru/1.x/?ll={},{}&l=map&z=8&pt={},{},pm2gnm&size=600,450". \
         format(coords[0], coords[1], coords[0], coords[1])
     response = requests.get(map_request)
-    map_file = "static/img/map.png"
+    map_file = "static/meta/maps/map.png"
     with open(map_file, "wb") as file:
         file.write(response.content)
