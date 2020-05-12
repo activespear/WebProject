@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -13,7 +13,6 @@
                         <tr>
                             <td class="headerTableTd" width="150px" align="center"><a href="/">Главная</a></td>
                             <td class="headerTableTd" width="*" align="center">&nbsp;<b>DostSeeker.com</b>&nbsp;</td>
-                            <td class="headerTableTd" width="15px"><a href="/mail">&#X2709;</a></td>
                             <td class="headerTableTd" width="150px" align="center"><a href="/login">Авторизоваться</a></td>
                         </tr>
                     </table>
@@ -24,13 +23,14 @@
                     <table width="100%">
                         <tr style="vertical-align: top;">
                             <td class="contentTableTd" width="220px">
+                                <form name="form1" action="/index" method="post">
                                 <table>
                                     <tr><td align="center"><b>Фильтр</b></td></tr>
                                     <tr><td>
                                         <select name="class" style="width: 150px;">
                                             <option value="">Выберите класс</option>
                                             {% for form in classes_list %}
-                                                <option value={{form}}>{{form}}</option>
+                                                <option value="{{form}}"{% if class_value == form %} selected{% endif %}>{{form}}</option>
                                             {% endfor %}
                                         </select>
                                     </td></tr>
@@ -38,17 +38,38 @@
                                         <select name="subject" style="width: 150px;">
                                             <option value="">Выберите предмет</option>
                                             {% for subject in sub_list %}
-                                                <option value={{subject}}>{{subject}}</option>
+                                                <option value="{{subject}}"{% if subject_value == subject %} selected{% endif %}>{{subject}}</option>
                                             {% endfor %}
                                         </select>
                                     </td></tr>
+                                    {% if places_list %}
+                                    <tr><td>
+                                        <select name="place" style="width: 150px;">
+                                            <!--<option value="">Выберите место</option>-->
+                                            {% for place in places_list %}
+                                                <option value="{{place}}"{% if place_value == place %} selected{% endif %}>{{place}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </td></tr>
+                                    <tr><td>
+                                        <input type="submit" value="Посмотреть карту" />
+                                    </td></tr>
+                                    {% else %}
+                                    <tr><td>
+                                        <input type="submit" value="Отправить" />
+                                    </td></tr>
+                                    {% endif %}
                                 </table>
+                                </form>
                             </td>
                             <td class="contentTableTd" width="*" height="500px" align="center">
                                 <b>Карта</b>
-                                <br><img src="static/img/map.png" alt="Карта не выбрана">
+                                <br><img src="{{ img }}" alt="Карта не выбрана">
                             </td>
-                            <td class="contentTableTd" width="265px" align="center"><b>Описание</b></td>
+                            <td class="contentTableTd" width="265px" align="center">
+                                <b>Описание</b>
+                                <hr>{{ text }}
+                            </td>
                         </tr>
                     </table>
                 </td>
