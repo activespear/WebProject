@@ -66,10 +66,24 @@
                                 <b>Карта</b>
                                 <br><img src="{{ img }}" alt="Карта не выбрана">
                             </td>
-                            <td class="contentTableTd" width="265px" align="center">
-                                <b>Описание</b>
-                                <br><img src="{{ photo }}" alt="вы еще не выбрали место">
-                                <hr>{{ text }}
+                            <td class="contentTableTd" width="265px">
+                                <table width="100%">
+                                    <tr>
+                                        <td align="center">
+                                            <b>Описание</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">
+                                            <br><img src="{{ photo }}" alt="вы еще не выбрали место">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left">
+                                            <hr>{{ text|safe }}
+                                        </td>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
                     </table>
